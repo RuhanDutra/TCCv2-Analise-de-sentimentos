@@ -6,15 +6,18 @@ module Avaliacoes
       CSV.foreach(uploaded_file_path, headers: true) do |row|
         avaliacoes << [row['avaliacoes'], row['produto_id']] if row['avaliacoes']
       end
-
-      url = URI.parse('http://localhost:5000/analisar')
+      api_url = ENV['API_PYTHON_URL']
+      url = URI.parse("#{api_url}/analisar")
       http = Net::HTTP.new(url.host, url.port)
       request = Net::HTTP::Post.new(url.path, { 'Content-Type' => 'application/json' })
       request.body = { avaliacoes: avaliacoes }.to_json
+      p "#######################################"
+      p url
       
       response = http.request(request)
+      p response.body
+      p "#######################################"
       response_body = JSON.parse(response.body)
-      
       response_body["sentimentos"]["negativos"].each do |negativo|
         cria_avaliacao(negativo, "negativo", produto_id)
       end

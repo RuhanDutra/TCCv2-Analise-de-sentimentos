@@ -33,7 +33,7 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
-gem 'layout_padrao', git: "https://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:x-oauth-basic@github.com/RuhanDutra/layout_padrao",
+gem 'layout_padrao', git: "https://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:x-oauth-basic@github.com/RuhanDutra/layout_padrao",
                      require: 'layout_padrao',
                      branch: 'master'
 

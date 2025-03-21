@@ -1,6 +1,6 @@
 GIT
-  remote: https://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:x-oauth-basic@github.com/RuhanDutra/layout_padrao
-  revision: 828b6d8e6672cda2e223f6aa991137ae6e1db4e6
+  remote: https://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:x-oauth-basic@github.com/RuhanDutra/layout_padrao
+  revision: 260e16bacbaa8ebd6b67a2b7a67bbeab07fe23d7
   branch: master
   specs:
     layout_padrao (0.1.0)

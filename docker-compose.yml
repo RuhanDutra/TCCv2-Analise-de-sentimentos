@@ -1,0 +1,29 @@
+services:
+  api_python:
+    build: ./api
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+    networks:
+      - app_network
+    volumes:
+      - ./api:/api
+
+  app_rails:
+    build: ./app/analise_avaliacoes
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api_python
+    environment:
+      - RAILS_ENV=development
+      - API_PYTHON_URL=http://api_python:5000
+      - NO_PROXY=api_python
+    networks:
+      - app_network
+    volumes:
+      - ./app/analise_avaliacoes:/app
+networks:
+  app_network:
+    driver: bridge

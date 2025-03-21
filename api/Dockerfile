@@ -2,7 +2,7 @@
 FROM python:3.11-slim
 
 # Definir o diretório de trabalho
-WORKDIR /app
+WORKDIR /api
 
 ENV HTTP_PROXY="10.20.0.4:3128"
 ENV HTTPS_PROXY="10.20.0.4:3128"
@@ -22,4 +22,5 @@ COPY . .
 EXPOSE 5000
 
 # Comando para executar o Flask
-CMD ["python", "app.py"]
+CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
+# CMD ["python", "app.py"]
