@@ -1,0 +1,31 @@
+pt-BR:
+  avaliacoes:
+    new: Novo Avaliacao 
+    edit: Editar Avaliacao
+    created: Avaliacao criado com sucesso!
+    updated: Avaliacao atualizado com sucesso!
+    deleted: Avaliacao excluído com sucesso!
+    no_deleted: Erro ao excluir o Avaliacao
+    no_created: Erro ao criar o Avaliacao
+    no_updated: Erro ao atualizar o Avaliacao
+
+  produtos:
+    new: Novo Produto 
+    edit: Editar Produto
+    created: Produto criado com sucesso!
+    updated: Produto atualizado com sucesso!
+    deleted: Produto excluído com sucesso!
+    no_deleted: Erro ao excluir o Produto
+    no_created: Erro ao criar o Produto
+    no_updated: Erro ao atualizar o Produto
+
+  helpers:
+    pesquisa: Pesquisa
+    registros_vazios: Nenhum registro encontrado.
+  acoes:
+    voltar: Voltar 
+    buscar: Buscar 
+    cancelar: Cancelar 
+    editar: Editar 
+    visualizar: Visualizar 
+    excluir: Excluir 

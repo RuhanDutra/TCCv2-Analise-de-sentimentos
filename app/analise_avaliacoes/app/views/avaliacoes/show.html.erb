@@ -1,0 +1,49 @@
+<% content_for :area_info do %>
+  <div class="card">
+    <div class="card-header d-flex justify-content-between">
+      <h3 class="card-text">
+        <i class="<%= icone_show %>"></i>
+        <%= @avaliacao %>
+      </h3>
+      <div class="heading-elements">
+        <%= btn_editar edit_avaliacao_url(@avaliacao), type: 'heading' %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-6">
+        <dl>
+          <dt><%= t 'activerecord.attributes.avaliacao.texto' %></dt>
+          <dd><%= @avaliacao.texto %></dd>
+        </dl>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-6">
+        <dl>
+          <dt><%= t 'activerecord.attributes.avaliacao.sentimento' %></dt>
+          <dd><%= @avaliacao.sentimento %></dd>
+        </dl>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-6">
+        <dl>
+          <dt><%= t 'activerecord.attributes.avaliacao.produto_id' %></dt>
+          <dd><%= @avaliacao.produto_id %></dd>
+        </dl>
+      </div>
+    </div>
+    <hr>
+    
+  </div>
+  <div class="card-footer d-flex flex-row-reverse">
+    <%= btn_voltar %>
+  </div>
+</div>

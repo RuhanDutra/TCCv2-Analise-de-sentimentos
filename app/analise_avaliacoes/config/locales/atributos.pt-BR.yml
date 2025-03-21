@@ -1,0 +1,19 @@
+pt-BR:
+  activerecord:
+    models:
+      avaliacao: Avaliacao
+
+      produto: Produto
+
+    attributes:
+      avaliacao:
+        texto: Texto
+        sentimento: Sentimento
+        produto_id: Produto
+
+
+      produto:
+        identificador: Identificador
+        descricao: Descricao
+
+

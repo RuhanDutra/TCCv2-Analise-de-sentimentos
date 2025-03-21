@@ -1,0 +1,30 @@
+<div class="card">
+  <%= simple_form_for @produto do |f| %>
+    <%= f.error_notification %>
+    <div class="card-body"> 
+      <p class="card-text">
+        <div class="row">
+        
+          <div class="col-md-6">
+            <%= f.input :identificador,
+              label: t('activerecord.attributes.produto.identificador'),
+              input_html: {maxlength: 20} %>
+          </div>
+        
+          <div class="col-md-6">
+            <%= f.input :descricao,
+              label: t('activerecord.attributes.produto.descricao'),
+              input_html: {maxlength: 20} %>
+          </div>
+        
+        </div>
+      </p>
+    </div>
+    <div class="card-footer">
+      <div class="d-flex justify-content-end">
+        <%= btn_submit @produto.new_record? %>
+        <%= btn_voltar %>
+      </div>
+    </div>
+  <% end %>
+</div>

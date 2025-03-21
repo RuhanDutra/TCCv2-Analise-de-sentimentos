@@ -1,0 +1,45 @@
+<% content_for :area_info do %>
+  <div class="card">
+    <div class="card-header d-flex justify-content-between">
+      <h3 class="card-text">
+        <i class="<%= icone_show %>"></i>
+        <%= @produto %>
+      </h3>
+      <div class="heading-elements">
+        <%= btn_editar edit_produto_url(@produto), type: 'heading' %>
+        <%= link_to "Carregar avaliações",
+          carrega_avaliacoes_path(@produto.id),
+          title: 'Carregar avaliações',
+          class: "btn btn-outline-dark",
+          data: { turbo_frame: 'modal' } %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-6">
+        <dl>
+          <dt><%= t 'activerecord.attributes.produto.identificador' %></dt>
+          <dd><%= @produto.identificador %></dd>
+        </dl>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-6">
+        <dl>
+          <dt><%= t 'activerecord.attributes.produto.descricao' %></dt>
+          <dd><%= @produto.descricao %></dd>
+        </dl>
+      </div>
+    </div>
+    <hr>
+    
+  </div>
+  <div class="card-footer d-flex flex-row-reverse">
+    <%= btn_voltar %>
+  </div>
+</div>

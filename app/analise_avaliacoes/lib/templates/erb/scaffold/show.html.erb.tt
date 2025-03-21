@@ -1,0 +1,31 @@
+<%% content_for :area_info do %>
+  <div class="card">
+    <div class="card-header d-flex justify-content-between">
+      <h3 class="card-text">
+        <i class="<%%= icone_show %>"></i>
+        <%%= @<%= singular_table_name %> %>
+      </h3>
+      <div class="heading-elements">
+        <%%= btn_editar edit_<%= singular_route_name %>_url(@<%= singular_table_name %>), type: 'heading' %>
+      </div>
+    </div>
+  </div>
+<%% end %>
+
+<div class="card">
+  <div class="card-body">
+    <% attributes.each do |atributo| %><div class="row">
+      <div class="col-md-6">
+        <dl>
+          <dt><%%= t 'activerecord.attributes.<%= singular_table_name %>.<%= atributo.column_name %>' %></dt>
+          <dd><%%= @<%= singular_table_name %>.<%= atributo.column_name %> %></dd>
+        </dl>
+      </div>
+    </div>
+    <hr>
+    <% end %>
+  </div>
+  <div class="card-footer d-flex flex-row-reverse">
+    <%%= btn_voltar %>
+  </div>
+</div>

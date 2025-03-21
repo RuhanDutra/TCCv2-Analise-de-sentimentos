@@ -1,0 +1,83 @@
+<div class="card">
+  <div class="card-body">
+    <h3 class="card-title">
+      <i class="<%= icone_search %> position-left"></i>
+      <%= t 'helpers.pesquisa' %>
+    </h3>
+    <p class="card-text">
+      <%= search_form_for @q, url: produtos_path do |f| %>
+        <div class="row">
+          
+            <div class="col-md-5">
+              <div class="form-group">
+                <%= f.search_field :identificador_cont,
+                  placeholder: t('activerecord.attributes.produto.identificador'),
+                  class: 'form-control busca_ransack', maxlength: 10 %>
+              </div>
+            </div>
+          
+            <div class="col-md-5">
+              <div class="form-group">
+                <%= f.search_field :descricao_cont,
+                  placeholder: t('activerecord.attributes.produto.descricao'),
+                  class: 'form-control busca_ransack', maxlength: 10 %>
+              </div>
+            </div>
+          
+          <div class="col-md-1">
+            <button name="button" type="submit" class="btn btn-primary right center_on_mobile legitRipple">
+              <span><%= t 'acoes.buscar' %></span>
+            </button>
+          </div>
+        </div>
+      <% end %>
+    </p>
+  </div>
+</div>
+
+<div class="card h-100">
+  <div class="card-body">
+    <h3 class="card-title d-flex justify-content-between">
+      <%= t 'activerecord.models.produto'.pluralize.titleize %>
+      <%= btn_novo t('produtos.new'), new_produto_path %>
+    </h3>
+    <p class="card-text">
+      <div class="table-responsive">
+        <table class="<%= tabela_padrao_class %>">
+          <thead>
+          <tr>
+            <th><%= t 'activerecord.attributes.produto.identificador' %></th>
+            <th><%= t 'activerecord.attributes.produto.descricao' %></th>
+            <th class="text-center">
+              <%= t 'activerecord.attributes.acoes' %>
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+            <% @produtos.each do |objeto| %>
+              <tr>
+                
+                  <td><%= objeto.identificador %></td>
+                
+                  <td><%= objeto.descricao %></td>
+                
+                  <td class="text-center">
+                    <%= btn_visualizar(produto_path(objeto)) %>
+                    <%= btn_editar(edit_produto_path(objeto), label: '') %>
+                    <%= btn_excluir(produto_path(objeto)) %>
+                  </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <% if @produtos.count == 0 %>
+        <blockquote>Nenhum registro encontrado.</blockquote>
+      <% end %>
+    </p>
+  </div>
+  <div class="card-footer">
+    <%= render 'shared/pagy_paginacao' %>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<%= turbo_frame_tag "modal" do %>
+  <div class="modal-header">
+    <button type="button" class="close" data-action="modal#force_close">×</button>
+    <h5 class="modal-title">Carregar produtos e avaliações</h5>
+  </div>
+  <div class="modal-body">
+    <%= form_with url: avaliacoes_por_csv_path(), method: :post, html: { multipart: true } do |form| %>
+        <%= form.hidden_field :produtos_e_avaliacoes, value: true %>
+  
+        <div class="form-group">
+            <%= form.label :file, "Carregar CSV com produtos e avaliações" %>
+            <%= form.file_field :file, accept: ".csv", class: "form-control" %>
+        </div>
+
+        <%= form.submit "Enviar", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+<% end %>

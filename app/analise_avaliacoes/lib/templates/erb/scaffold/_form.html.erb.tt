@@ -1,0 +1,24 @@
+<div class="card">
+  <%%= simple_form_for @<%= singular_table_name %> do |f| %>
+    <%%= f.error_notification %>
+    <div class="card-body"> 
+      <p class="card-text">
+        <div class="row">
+        <% attributes.each do |atributo| %>
+          <div class="col-md-6">
+            <%%= f.input :<%= atributo.column_name %>,
+              label: t('activerecord.attributes.<%= singular_table_name %>.<%= atributo.column_name %>'),
+              input_html: {maxlength: 20} %>
+          </div>
+        <% end %>
+        </div>
+      </p>
+    </div>
+    <div class="card-footer">
+      <div class="d-flex justify-content-end">
+        <%%= btn_submit @<%= singular_table_name %>.new_record? %>
+        <%%= btn_voltar %>
+      </div>
+    </div>
+  <%% end %>
+</div>

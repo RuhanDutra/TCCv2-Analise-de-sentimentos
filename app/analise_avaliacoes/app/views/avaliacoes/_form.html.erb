@@ -1,0 +1,36 @@
+<div class="card">
+  <%= simple_form_for @avaliacao do |f| %>
+    <%= f.error_notification %>
+    <div class="card-body"> 
+      <p class="card-text">
+        <div class="row">
+        
+          <div class="col-md-6">
+            <%= f.input :texto,
+              label: t('activerecord.attributes.avaliacao.texto'),
+              input_html: {maxlength: 20} %>
+          </div>
+        
+          <div class="col-md-6">
+            <%= f.input :sentimento,
+              label: t('activerecord.attributes.avaliacao.sentimento'),
+              input_html: {maxlength: 20} %>
+          </div>
+        
+          <div class="col-md-6">
+            <%= f.input :produto_id,
+              label: t('activerecord.attributes.avaliacao.produto_id'),
+              input_html: {maxlength: 20} %>
+          </div>
+        
+        </div>
+      </p>
+    </div>
+    <div class="card-footer">
+      <div class="d-flex justify-content-end">
+        <%= btn_submit @avaliacao.new_record? %>
+        <%= btn_voltar %>
+      </div>
+    </div>
+  <% end %>
+</div>
