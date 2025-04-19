@@ -21,16 +21,16 @@ nlp = spacy.load("pt_core_news_sm")
 def analisar_sentimentos(avaliacoes):
     sentimentos = {'positivos': [], 'negativos': [], 'neutros': []}
     
-    for avaliacao, produto_id in avaliacoes:
+    for avaliacao, produto_id, descricao in avaliacoes:
         resultado = sentiment_analysis(avaliacao)[0]
         label = resultado['label']
         
         if "5" in label or "4" in label:
-            sentimentos['positivos'].append({'avaliacao': avaliacao, 'produto_id': produto_id})
+            sentimentos['positivos'].append({'avaliacao': avaliacao, 'produto_id': produto_id, 'descricao': descricao})
         elif "1" in label or "2" in label:
-            sentimentos['negativos'].append({'avaliacao': avaliacao, 'produto_id': produto_id})
+            sentimentos['negativos'].append({'avaliacao': avaliacao, 'produto_id': produto_id, 'descricao': descricao})
         else:
-            sentimentos['neutros'].append({'avaliacao': avaliacao, 'produto_id': produto_id})
+            sentimentos['neutros'].append({'avaliacao': avaliacao, 'produto_id': produto_id, 'descricao': descricao})
     
     return sentimentos
 

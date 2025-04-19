@@ -1,3 +1,15 @@
+<style>
+  #grafico-produtos {
+    max-height: 350px;
+  }
+  .card {
+  border-radius: 16px;
+  }
+  .card-title {
+    font-weight: 600;
+  }
+</style>
+
 <% content_for :area_info do %>
   <div class="card">
     <div class="card-header d-flex justify-content-between">
@@ -26,9 +38,6 @@
           <dd><%= @produto.identificador %></dd>
         </dl>
       </div>
-    </div>
-    <hr>
-    <div class="row">
       <div class="col-md-6">
         <dl>
           <dt><%= t 'activerecord.attributes.produto.descricao' %></dt>
@@ -36,10 +45,112 @@
         </dl>
       </div>
     </div>
+
     <hr>
     
+    <div class="container mt-4">
+      <h4 class="mb-4">Análise de Sentimentos</h4>
+
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Total de Sentimentos</h5>
+              <canvas id="grafico-barras" height="200"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Percentual de Sentimentos</h5>
+              <canvas id="grafico-pizza" height="200"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Elogios</h5>
+              <canvas id="grafico-elogios" height="250"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Críticas</h5>
+              <canvas id="grafico-criticas" height="250"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
+
   <div class="card-footer d-flex flex-row-reverse">
     <%= btn_voltar %>
   </div>
 </div>
+
+<script>
+  document.addEventListener("turbo:load", function() {
+    const elBarras = document.getElementById('grafico-barras');
+    const elPizza = document.getElementById('grafico-pizza');
+    const elElogios = document.getElementById('grafico-elogios');
+    const elCriticas = document.getElementById('grafico-criticas');
+
+    if (elBarras) {
+      Chart.getChart(elBarras)?.destroy();
+      new Chart(elBarras, {
+        type: 'bar',
+        data: <%= raw @grafico_barras.to_json %>,
+        options: { responsive: true }
+      });
+    }
+
+    if (elPizza) {
+      Chart.getChart(elPizza)?.destroy();
+      new Chart(elPizza, {
+        type: 'pie',
+        data: <%= raw @grafico_pizza.to_json %>,
+        options: { responsive: true }
+      });
+    }
+
+    if (elElogios) {
+      Chart.getChart(elElogios)?.destroy();
+      new Chart(elElogios, {
+        type: 'bar',
+        data: <%= raw @grafico_elogios.to_json %>,
+        options: {
+          responsive: true,
+          indexAxis: 'y',
+          scales: {
+            x: { beginAtZero: true }
+          }
+        }
+      });
+    }
+
+    if (elCriticas) {
+      Chart.getChart(elCriticas)?.destroy();
+      new Chart(elCriticas, {
+        type: 'bar',
+        data: <%= raw @grafico_criticas.to_json %>,
+        options: {
+          responsive: true,
+          indexAxis: 'y',
+          scales: {
+            x: { beginAtZero: true }
+          }
+        }
+      });
+    }
+  });
+</script>
+

@@ -11,10 +11,13 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.2].define(version: 2024_10_30_161646) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "avaliacoes", force: :cascade do |t|
     t.string "texto"
     t.integer "sentimento"
-    t.integer "produto_id", null: false
+    t.bigint "produto_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["produto_id"], name: "index_avaliacoes_on_produto_id"

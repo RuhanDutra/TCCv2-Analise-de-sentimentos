@@ -10,4 +10,7 @@ class Avaliacao < ApplicationRecord
   def self.ransackable_attributes(auth_object = nil)
     ["created_at", "id", "id_value", "produto_id", "sentimento", "texto", "updated_at"]
   end
+  def to_s
+    texto
+  end
 end

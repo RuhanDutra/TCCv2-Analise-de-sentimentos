@@ -1,6 +1,99 @@
-      <h1>Dashboard</h1>
-      <%= link_to "Carregar produtos e avaliações",
+<style>
+  #grafico-produtos {
+    max-height: 350px;
+  }
+  .card {
+  border-radius: 16px;
+  }
+  .card-title {
+    font-weight: 600;
+  }
+</style>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="fw-bold">Dashboard</h1>
+    <%= link_to "Carregar produtos e avaliações",
       carga_produtos_avaliacoes_path(),
       title: 'Carregar produtos e avaliações',
       class: "btn btn-outline-dark",
       data: { turbo_frame: 'modal' } %>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 mb-4">
+      <div class="card shadow-sm rounded">
+        <div class="card-body">
+          <h5 class="card-title">Top 5 Produtos Mais Avaliados</h5>
+          <canvas id="grafico-produtos" height="350"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-sm rounded">
+        <div class="card-body">
+          <h5 class="card-title">Total de Sentimentos</h5>
+          <canvas id="grafico-barras" height="300"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-sm rounded">
+        <div class="card-body">
+          <h5 class="card-title">Percentual de Sentimentos</h5>
+          <canvas id="grafico-pizza" height="300"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<script>
+  document.addEventListener("turbo:load", function() {
+    const elBarras = document.getElementById('grafico-barras');
+    const elPizza = document.getElementById('grafico-pizza');
+    const elProdutos = document.getElementById('grafico-produtos');
+
+    if (elBarras) {
+      Chart.getChart(elBarras)?.destroy();
+      new Chart(elBarras, {
+        type: 'bar',
+        data: <%= raw @grafico_barras.to_json %>,
+        options: { responsive: true }
+      });
+    }
+
+    if (elPizza) {
+      Chart.getChart(elPizza)?.destroy();
+      new Chart(elPizza, {
+        type: 'pie',
+        data: <%= raw @grafico_pizza.to_json %>,
+        options: { responsive: true }
+      });
+    }
+
+    if (elProdutos) {
+      Chart.getChart(elProdutos)?.destroy();
+      new Chart(elProdutos, {
+        type: 'bar',
+        data: <%= raw @grafico_produtos_dados.to_json %>,
+        options: {
+          responsive: true,
+          indexAxis: 'y', // barras horizontais
+          scales: {
+            x: {
+              beginAtZero: true,
+              title: { display: true, text: 'Quantidade de Avaliações' }
+            },
+            y: {
+              title: { display: true, text: 'Produto' }
+            }
+          }
+        }
+      });
+    }
+  });
+</script>
+

@@ -1,12 +1,12 @@
-avaliacoes,produto_id
-"Ótimo produto, adorei a qualidade e o preço.",
-"Péssimo atendimento, demorou muito para chegar.",1
+avaliacoes,produto_id,descricao
+"Ótimo produto, adorei a qualidade e o preço.",4,Fone de Ouvido
+"Péssimo atendimento, demorou muito para chegar.",1,Teclado
 "Produto excelente, vale o preço.",1
 "Infelizmente, não gostei da qualidade do material.",1
 "A entrega foi super rápida, estou satisfeito.",1
 "Produto chegou quebrado, não recomendo.",1
 "Boa qualidade, mas o preço é alto.",1
-"Produto de péssima qualidade, não vale a pena.",2
+"Produto de péssima qualidade, não vale a pena.",2,Mouse
 "Recomendo, produto de qualidade e entrega rápida.",2
 "Demorou demais para chegar, não compraria novamente.",2
 "Atendimento excelente, muito atenciosos.",2
@@ -19,7 +19,7 @@ Adorei! Chegou antes do prazo e em perfeito estado.,1
 "Parece usado, não gostei.",1
 "Produto ótimo, superou minhas expectativas.",1
 "A caixa chegou toda amassada, mas o produto estava ok.",1
-Maravilhoso! Recomendo para todos.,3
+Maravilhoso! Recomendo para todos.,3,Monitor
 "Péssimo, não corresponde ao anunciado.",1
 "Muito satisfeito, vale cada centavo.",1
 "Não recomendo, péssima experiência de compra.",1

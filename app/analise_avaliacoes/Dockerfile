@@ -5,11 +5,6 @@ FROM ruby:$RUBY_VERSION-slim AS base
 # Definir diretório de trabalho
 WORKDIR /app
 
-# Configuração de proxies
-ENV http_proxy=http://10.20.0.4:3128
-ENV https_proxy=http://10.20.0.4:3128
-ENV no_proxy="localhost,127.0.0.1"
-
 # Instalar pacotes necessários
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \

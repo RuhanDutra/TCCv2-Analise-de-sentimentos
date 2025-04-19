@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card"  style="margin-bottom: 10px;">
   <div class="card-body">
     <h3 class="card-title">
       <i class="<%= icone_search %> position-left"></i>
@@ -8,7 +8,7 @@
       <%= search_form_for @q, url: avaliacoes_path do |f| %>
         <div class="row">
           
-            <div class="col-md-5">
+            <div class="col-md-4">
               <div class="form-group">
                 <%= f.search_field :texto_cont,
                   placeholder: t('activerecord.attributes.avaliacao.texto'),
@@ -16,7 +16,7 @@
               </div>
             </div>
           
-            <div class="col-md-5">
+            <div class="col-md-3">
               <div class="form-group">
                 <%= f.search_field :sentimento_cont,
                   placeholder: t('activerecord.attributes.avaliacao.sentimento'),
@@ -24,7 +24,7 @@
               </div>
             </div>
           
-            <div class="col-md-5">
+            <div class="col-md-4">
               <div class="form-group">
                 <%= f.search_field :produto_id_cont,
                   placeholder: t('activerecord.attributes.avaliacao.produto_id'),

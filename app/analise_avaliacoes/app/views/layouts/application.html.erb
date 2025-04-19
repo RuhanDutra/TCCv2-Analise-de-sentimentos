@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <style>
+     html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+    }
+  </style>
   <head>
-  <title>#TODO: Nome do App</title>
+  <title>Avaliações</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
@@ -24,6 +32,7 @@
   <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js', 'data-turbo-track': 'reload' %>
   <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.8/jquery.mask.min.js', 'data-turbo-track': 'reload' %>
   <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.16/sweetalert2.min.js', 'data-turbo-track': 'reload' %>
+  <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/chart.js", defer: true %>
   <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
   <!-- Theme JS files -->
   <%= javascript_importmap_tags %>
@@ -42,7 +51,9 @@
           <div class="page-content">
             <div class="content-wrapper">
               <%= flash_message %>
-              <%= yield :area_info %>
+              <div style="margin-bottom: 10px;">
+                <%= yield :area_info %>
+              </div>
               <%= yield %>
             </div>
           </div> 
